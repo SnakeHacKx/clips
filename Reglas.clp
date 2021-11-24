@@ -1,6 +1,7 @@
 (deftemplate condiciones
 	(slot general_tipoDesarrollo (type STRING)(default "ninguno"))
     
+    ;Desarrollo Web
 	(slot dw_tipoDesarrollador (type STRING)(default "ninguno"))
 	(slot dw_experienciaFrontend (type STRING)(default "ninguno")) 
 	(slot dw_utilizaFrameworks (type STRING)(default "ninguno")) 
@@ -8,6 +9,7 @@
 	(slot dw_gestorBaseDeDatos (type STRING)(default "ninguno"))
 	(slot dw_SOUtilizado (type STRING)(default "ninguno"))
 
+    ;Desarrollo de Videojuegos
 	(slot dv_plataforma (type STRING)(default "ninguno"))
 	(slot dv_formato (type STRING)(default "ninguno"))
 	(slot dv_motor (type STRING)(default "ninguno"))
@@ -15,6 +17,7 @@
 	(slot dv_motorSegunPresupuesto (type STRING)(default "ninguno"))
 	(slot dv_tipoVideojuego (type STRING)(default "ninguno"))
 
+    ;Aplicaciones Escritorio
 	(slot ae_perfilDesarrollador (type STRING)(default "ninguno"))
 	(slot ae_experienciaEnProgramacion (type STRING)(default "ninguno"))
 	(slot ae_paradigmaProgPreferido (type STRING)(default "ninguno"))
@@ -24,6 +27,7 @@
 	(slot ae_paraManejoServidores (type STRING)(default "ninguno"))
 	(slot ae_requiereScripts (type STRING)(default "ninguno"))
 
+    ;Aplicaciones Moviles
 	(slot am_SOObjetivo (type STRING)(default "ninguno"))
 	(slot am_SOUtilizado (type STRING)(default "ninguno"))
 	(slot am_IDEUtilizado (type STRING)(default "ninguno"))
@@ -31,7 +35,63 @@
 	(slot am_paraAplicacionesHibridas (type STRING)(default "ninguno"))
 	(slot am_experienciaUtilizandoQT (type STRING)(default "ninguno"))
 	(slot am_framework (type STRING)(default "ninguno"))
-    
+)
+
+;DEFINIENDO REGLA INICIAL
+(defrule regla_inicial
+	(initial-fact)
+	=>
+	(printout t crlf "Para que tipo de desarrollo lo utilizara?" crlf)
+	(printout t crlf "(A) Web" crlf)
+	(printout t crlf "(B) Videojuegos" crlf)
+	(printout t crlf "(C) Escritorio" crlf)
+	(printout t crlf "(D) Movil" crlf)
+	(bind ?general_tipoDesarrollo(readline))
+	(assert(general_tipoDesarrollo ?general_tipoDesarrollo))
+)
+
+(defrule dw_regla1
+	(general_tipoDesarrollo ?general_tipoDesarrollo)
+	=>
+	(if (eq ?general_tipoDesarrollo "A")
+	then
+		(printout t crlf "Que tipo de desarrollador es?" crlf)
+		(printout t crlf "(A) Frontend" crlf)
+		(printout t crlf "(B) Backend" crlf)
+		(bind ?tipoDes(readline))
+		(assert(dw_tipoDesarrollador ?tipoDes))
+	(if (eq ?tipoDes "A")
+	then
+		(printout t crlf "Ha trabajado en desarrollo Frontend anteriormente?" crlf)
+		(printout t crlf "(A) Si" crlf)
+		(printout t crlf "(B) No" crlf)
+		(bind ?xp_frontend(readline))
+		(assert(dw_experienciaFrontend ?xp_frontend))
+		(assert (condiciones(general_tipoDesarrollo ?general_tipoDesarrollo)(dw_tipoDesarrollador ?tipoDes)(dw_experienciaFrontend ?xp_frontend)))
+		)
+	)
+)
+
+(defrule dw_regla2
+	(general_tipoDesarrollo ?general_tipoDesarrollo)
+	=>
+	(if (eq ?general_tipoDesarrollo "A")
+	then
+		(printout t crlf "Que tipo de desarrollador es?" crlf)
+		(printout t crlf "(A) Frontend" crlf)
+		(printout t crlf "(B) Backend" crlf)
+		(bind ?tipoDes(readline))
+		(assert(dw_tipoDesarrollador ?tipoDes))
+	(if (eq ?tipoDes "B")
+	then
+		(printout t crlf "Que gestor de bases de datos desea utilizar?" crlf)
+		(printout t crlf "(A) MySQL" crlf)
+		(printout t crlf "(B) SQL Server" crlf)
+		(bind ?gestorBD(readline))
+		(assert(dw_gestorBaseDeDatos ?gestorBD))
+		(assert (condiciones(general_tipoDesarrollo ?general_tipoDesarrollo)(dw_tipoDesarrollador ?tipoDes)(dw_gestorBaseDeDatos ?gestorBD)))
+		)
+	)
 )
 
 ;REGLA 1 
