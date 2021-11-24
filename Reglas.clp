@@ -1,3 +1,39 @@
+(deftemplate condiciones
+	(slot general_tipoDesarrollo (type STRING)(default "ninguno"))
+    
+	(slot dw_tipoDesarrollador (type STRING)(default "ninguno"))
+	(slot dw_experienciaFrontend (type STRING)(default "ninguno")) 
+	(slot dw_utilizaFrameworks (type STRING)(default "ninguno")) 
+	(slot dw_preferenciaFramework (type STRING)(default "ninguno"))
+	(slot dw_gestorBaseDeDatos (type STRING)(default "ninguno"))
+	(slot dw_SOUtilizado (type STRING)(default "ninguno"))
+
+	(slot dv_plataforma (type STRING)(default "ninguno"))
+	(slot dv_formato (type STRING)(default "ninguno"))
+	(slot dv_motor (type STRING)(default "ninguno"))
+	(slot dv_perfilDesarrollador (type STRING)(default "ninguno"))
+	(slot dv_motorSegunPresupuesto (type STRING)(default "ninguno"))
+	(slot dv_tipoVideojuego (type STRING)(default "ninguno"))
+
+	(slot ae_perfilDesarrollador (type STRING)(default "ninguno"))
+	(slot ae_experienciaEnProgramacion (type STRING)(default "ninguno"))
+	(slot ae_paradigmaProgPreferido (type STRING)(default "ninguno"))
+	(slot ae_conoceFundamentosProg (type STRING)(default "ninguno"))
+	(slot ae_SOObjetivo (type STRING)(default "ninguno"))
+	(slot ae_areaDeAplicacion (type STRING)(default "ninguno"))
+	(slot ae_paraManejoServidores (type STRING)(default "ninguno"))
+	(slot ae_requiereScripts (type STRING)(default "ninguno"))
+
+	(slot am_SOObjetivo (type STRING)(default "ninguno"))
+	(slot am_SOUtilizado (type STRING)(default "ninguno"))
+	(slot am_IDEUtilizado (type STRING)(default "ninguno"))
+	(slot am_UtilizaXamarin (type STRING)(default "ninguno"))
+	(slot am_paraAplicacionesHibridas (type STRING)(default "ninguno"))
+	(slot am_experienciaUtilizandoQT (type STRING)(default "ninguno"))
+	(slot am_framework (type STRING)(default "ninguno"))
+    
+)
+
 ;REGLA 1 
 (defrule R1 "JavaScript web"
 (tipo web)
