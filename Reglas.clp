@@ -43,14 +43,14 @@
 	=>
 	(printout t crlf "Para que tipo de desarrollo lo utilizara?" crlf)
 	(printout t crlf "(A) Web" crlf)
-	(printout t crlf "(B) Videojuegos" crlf)
-	(printout t crlf "(C) Escritorio" crlf)
-	(printout t crlf "(D) Movil" crlf)
+	(printout t crlf "(B) Escritorio" crlf)
 	(bind ?general_tipoDesarrollo(readline))
 	(assert(general_tipoDesarrollo ?general_tipoDesarrollo))
 )
 
-(defrule dw_regla1
+;REGLAS PARA DESARROLLO WEB
+;formato usado: tipoDesarrollo_nivelDelArbol_numeroDeRegla
+(defrule dw_n2_regla1
 	(general_tipoDesarrollo ?general_tipoDesarrollo)
 	=>
 	(if (eq ?general_tipoDesarrollo "A")
@@ -67,12 +67,84 @@
 		(printout t crlf "(B) No" crlf)
 		(bind ?xp_frontend(readline))
 		(assert(dw_experienciaFrontend ?xp_frontend))
-		(assert (condiciones(general_tipoDesarrollo ?general_tipoDesarrollo)(dw_tipoDesarrollador ?tipoDes)(dw_experienciaFrontend ?xp_frontend)))
 		)
 	)
 )
 
-(defrule dw_regla2
+(defrule dw_n4_regla2
+	(dw_experienciaFrontend ?xp_frontend)
+	=>
+	(if (eq ?dw_experienciaFrontend "A")
+	then
+		(printout t crlf "Utiliza Framework para trabajar?" crlf)
+		(printout t crlf "(A) Si" crlf)
+		(printout t crlf "(B) No" crlf)
+		(bind ?utilizaFramework(readline))
+		(assert(dw_utilizaFrameworks ?utilizaFramework))
+	(if (eq ?utilizaFramework "A")
+	then
+		(printout t crlf "Cual prefiere?" crlf)
+		(printout t crlf "(A) Angular" crlf)
+		(printout t crlf "(B) Spring" crlf)
+		(bind ?prefFramework(readline))
+		(assert(dw_preferenciaFramework ?prefFramework))
+		)
+	)
+)
+
+(defrule dw_n4_regla3
+	(dw_experienciaFrontend ?xp_frontend)
+	=>
+	(if (eq ?dw_experienciaFrontend "A")
+	then
+		(printout t crlf "Utiliza Framework para trabajar?" crlf)
+		(printout t crlf "(A) Si" crlf)
+		(printout t crlf "(B) No" crlf)
+		(bind ?utilizaFramework(readline))
+		(assert(dw_utilizaFrameworks ?utilizaFramework))
+	(if (eq ?utilizaFramework "B")
+	then
+		;CONCLUSION: SASS
+		(assert (condiciones
+			(general_tipoDesarrollo ?general_tipoDesarrollo)
+			(dw_tipoDesarrollador ?tipoDes)
+			(dw_experienciaFrontend ?xp_frontend)
+			(dw_utilizaFrameworks ?utilizaFramework)))
+		)
+	)
+)
+
+(defrule dw_n5_regla4
+	(dw_preferenciaFramework ?prefFramework)
+	=>
+	(if (eq ?prefFramework "A")
+	then
+		;CONCLUSION: JavaScript
+		(assert (condiciones
+			(general_tipoDesarrollo ?general_tipoDesarrollo)
+			(dw_tipoDesarrollador ?tipoDes)
+			(dw_experienciaFrontend ?xp_frontend)
+			(dw_utilizaFrameworks ?utilizaFramework)
+			(dw_preferenciaFramework ?prefFramework)))
+	)
+)
+
+(defrule dw_n5_regla5
+	(dw_preferenciaFramework ?prefFramework)
+	=>
+	(if (eq ?prefFramework "B")
+	then
+		;CONCLUSION: Java
+		(assert (condiciones
+			(general_tipoDesarrollo ?general_tipoDesarrollo)
+			(dw_tipoDesarrollador ?tipoDes)
+			(dw_experienciaFrontend ?xp_frontend)
+			(dw_utilizaFrameworks ?utilizaFramework)
+			(dw_preferenciaFramework ?prefFramework)))
+	)
+)
+
+(defrule dw_n2_regla6
 	(general_tipoDesarrollo ?general_tipoDesarrollo)
 	=>
 	(if (eq ?general_tipoDesarrollo "A")
@@ -89,10 +161,69 @@
 		(printout t crlf "(B) SQL Server" crlf)
 		(bind ?gestorBD(readline))
 		(assert(dw_gestorBaseDeDatos ?gestorBD))
-		(assert (condiciones(general_tipoDesarrollo ?general_tipoDesarrollo)(dw_tipoDesarrollador ?tipoDes)(dw_gestorBaseDeDatos ?gestorBD)))
 		)
 	)
 )
+
+(defrule dw_n3_regla7
+	(dw_gestorBaseDeDatos ?gestorBD)
+	=>
+	(if (eq ?gestorBD "A")
+	then
+		;CONCLUSION: PHP
+		(assert (condiciones
+			(general_tipoDesarrollo ?general_tipoDesarrollo)
+			(dw_tipoDesarrollador ?tipoDes)
+			(dw_gestorBaseDeDatos ?gestorBD))
+	)
+)
+
+(defrule dw_n4_regla8
+	(dw_gestorBaseDeDatos ?gestorBD)
+	=>
+	(if (eq ?tipoDes "B")
+	then
+		(printout t crlf "Que SO utilizara para desarrollar?" crlf)
+		(printout t crlf "(A) Windows" crlf)
+		(printout t crlf "(B) MacOS/Linux" crlf)
+		(bind ?SOUtilizadoDesarrollar(readline))
+		(assert(dw_SOUtilizado ?SOUtilizadoDesarrollar))
+		)
+	)
+	(if (eq ?gestorBD "A")
+	then
+		;CONCLUSION: C#
+		(assert (condiciones
+			(general_tipoDesarrollo ?general_tipoDesarrollo)
+			(dw_tipoDesarrollador ?tipoDes)
+			(dw_gestorBaseDeDatos ?gestorBD)
+			(dw_SOUtilizado ?SOUtilizadoDesarrollar))
+	)
+)
+
+(defrule dw_n4_regla9
+	(dw_gestorBaseDeDatos ?gestorBD)
+	=>
+	(if (eq ?tipoDes "B")
+	then
+		(printout t crlf "Que SO utilizara para desarrollar?" crlf)
+		(printout t crlf "(A) Windows" crlf)
+		(printout t crlf "(B) MacOS/Linux" crlf)
+		(bind ?SOUtilizadoDesarrollar(readline))
+		(assert(dw_SOUtilizado ?SOUtilizadoDesarrollar))
+		)
+	)
+	(if (eq ?gestorBD "B")
+	then
+		;CONCLUSION: Python
+		(assert (condiciones
+			(general_tipoDesarrollo ?general_tipoDesarrollo)
+			(dw_tipoDesarrollador ?tipoDes)
+			(dw_gestorBaseDeDatos ?gestorBD)
+			(dw_SOUtilizado ?SOUtilizadoDesarrollar))
+	)
+)
+
 
 ;REGLA 1 
 (defrule R1 "JavaScript web"
