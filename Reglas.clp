@@ -74,7 +74,7 @@
 (defrule dw_n4_regla2
 	(dw_experienciaFrontend ?xp_frontend)
 	=>
-	(if (eq ?dw_experienciaFrontend "A")
+	(if (eq ?xp_frontend "A")
 	then
 		(printout t crlf "Utiliza Framework para trabajar?" crlf)
 		(printout t crlf "(A) Si" crlf)
