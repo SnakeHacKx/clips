@@ -473,7 +473,8 @@
 (dw_preferenciaFramework "A"))
 =>
 (printout t "Se recomienda el lenguaje JavaScript" crlf)
-(refresh regla_inicial)
+(retract *)
+(assert(iniciar))
 )
 
 ;;Regla 2
@@ -486,7 +487,8 @@
 (dw_preferenciaFramework "B"))
 =>
 (printout t "Se recomienda el lenguaje Java" crlf)
-(refresh regla_inicial)
+(retract *)
+(assert(iniciar))
 )
 
 ;;Regla 3
@@ -497,7 +499,8 @@
 (dw_utilizaFrameworks "B"))
 =>
 (printout t "Se recomienda el lenguaje SASS" crlf)
-(refresh regla_inicial)
+(retract *)
+(assert(iniciar))
 )
 
 ;Regla 4
@@ -508,7 +511,8 @@
 (dw_experienciaFrontend "B"))
 =>
 (printout t "Se recomienda el lenguaje HTML/CSS" crlf)
-(refresh regla_inicial)
+(retract *)
+(assert(iniciar))
 )
 
 ;Regla 5
@@ -519,7 +523,8 @@
 (dw_gestorBaseDeDatos "A"))
 =>
 (printout t "Se recomienda el lenguaje PHP" crlf)
-(refresh regla_inicial)
+(retract *)
+(assert(iniciar))
 )
 
 ;Regla 6
@@ -531,7 +536,8 @@
 (dw_SOUtilizado "A"))
 =>
 (printout t "Se recomienda el lenguaje C#" crlf)
-(refresh regla_inicial)
+(retract *)
+(assert(iniciar))
 )
 
 ;Regla 7
@@ -543,7 +549,8 @@
 (dw_SOUtilizado "B"))
 =>
 (printout t "Se recomienda el lenguaje Python" crlf)
-(refresh regla_inicial)
+(retract *)
+(assert(iniciar))
 )
 
 
