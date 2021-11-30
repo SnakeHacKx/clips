@@ -12,7 +12,7 @@
 
     ;Aplicaciones Escritorio
 	(slot ae_perfilDesarrollador (type STRING)(default "ninguno"))
-	(slot ae_experienciaEnProgramacion (type STRING)(default "ninguno"))
+	(slot ae_xpEnProgramacion (type STRING)(default "ninguno"))
 	(slot ae_paradigmaProgPreferido (type STRING)(default "ninguno"))
 	(slot ae_conoceFundamentosProg (type STRING)(default "ninguno"))
 	(slot ae_SOObjetivo (type STRING)(default "ninguno"))
@@ -92,21 +92,6 @@
 			(dw_tipoDesarrollador ?tipoDes)
 			(dw_experienciaFrontend ?xp_frontend)
 			(dw_utilizaFrameworks ?utilizaFramework)))
-		)
-)
-
-(defrule dw_n4_regla10
-	(dw_experienciaFrontend ?xp_frontend)
-	(general_tipoDesarrollo ?general_tipoDesarrollo)
-	(dw_tipoDesarrollador ?tipoDes)
-	=>
-	(if (eq ?xp_frontend "B")
-	then
-		;CONCLUSION: HTML/CSS
-		(assert (condiciones
-			(general_tipoDesarrollo ?general_tipoDesarrollo)
-			(dw_tipoDesarrollador ?tipoDes)
-			(dw_experienciaFrontend ?xp_frontend)))
 		)
 )
 
@@ -238,6 +223,245 @@
 	)
 )
 
+(defrule dw_n4_regla10
+	(dw_experienciaFrontend ?xp_frontend)
+	(general_tipoDesarrollo ?general_tipoDesarrollo)
+	(dw_tipoDesarrollador ?tipoDes)
+	=>
+	(if (eq ?xp_frontend "B")
+	then
+		;CONCLUSION: HTML/CSS
+		(assert (condiciones
+			(general_tipoDesarrollo ?general_tipoDesarrollo)
+			(dw_tipoDesarrollador ?tipoDes)
+			(dw_experienciaFrontend ?xp_frontend)))
+		)
+)
+
+;REGLAS PARA APLICACIONES DE ESCRITORIO
+(defrule ae_n2_regla1
+	(general_tipoDesarrollo ?general_tipoDesarrollo)
+	=>
+	(if (eq ?general_tipoDesarrollo "B")
+	then
+		(printout t crlf "Cual es su perfil?" crlf)
+		(printout t crlf "(A) Estudiante" crlf)
+		(printout t crlf "(B) Profesional" crlf)
+		(bind ?perfilDes(readline))
+		(assert(ae_perfilDesarrollador ?perfilDes))
+	(if (eq ?perfilDes "A")
+	then
+		(printout t crlf "Ha programado alguna vez?" crlf)
+		(printout t crlf "(A) Si" crlf)
+		(printout t crlf "(B) No" crlf)
+		(bind ?xp_programacion(readline))
+		(assert(ae_xpEnProgramacion ?xp_programacion))
+		)
+	)
+)
+
+(defrule ae_n4_regla2
+	(ae_xpEnProgramacion ?xp_programacion)
+	(general_tipoDesarrollo ?general_tipoDesarrollo)
+	(ae_perfilDesarrollador ?perfilDes)
+	=>
+	(if (eq ?xp_programacion "A")
+	then
+		(printout t crlf "Que paradigma de programacion prefiere?" crlf)
+		(printout t crlf "(A) Estructurado" crlf)
+		(printout t crlf "(B) Orientado a Objetos" crlf)
+		(bind ?paradigmaPref(readline))
+		(assert(ae_paradigmaProgPreferido ?paradigmaPref))
+	(if (eq ?paradigmaPref "A")
+	then
+		;CONCLUSION: C
+		(assert (condiciones
+			(general_tipoDesarrollo ?general_tipoDesarrollo)
+			(ae_perfilDesarrollador ?perfilDes)
+			(ae_xpEnProgramacion ?xp_programacion)
+			(ae_paradigmaProgPreferido ?paradigmaPref)))
+		)
+
+	(if (eq ?paradigmaPref "B")
+	then
+		;CONCLUSION: Rust
+		(assert (condiciones
+			(general_tipoDesarrollo ?general_tipoDesarrollo)
+			(ae_perfilDesarrollador ?perfilDes)
+			(ae_xpEnProgramacion ?xp_programacion)
+			(ae_paradigmaProgPreferido ?paradigmaPref)))
+		)
+	)
+)
+
+(defrule ae_n4_regla3
+	(ae_xpEnProgramacion ?xp_programacion)
+	(general_tipoDesarrollo ?general_tipoDesarrollo)
+	(ae_perfilDesarrollador ?perfilDes)
+	=>
+	(if (eq ?xp_programacion "B")
+	then
+		(printout t crlf "Conoce los fundamentos de la programacion?" crlf)
+		(printout t crlf "(A) Si" crlf)
+		(printout t crlf "(B) No" crlf)
+		(bind ?conoceFundProg(readline))
+		(assert(ae_conoceFundamentosProg ?conoceFundProg))
+	(if (eq ?conoceFundProg "A")
+	then
+		;CONCLUSION: Visual Basic .NET
+		(assert (condiciones
+			(general_tipoDesarrollo ?general_tipoDesarrollo)
+			(ae_perfilDesarrollador ?perfilDes)
+			(ae_xpEnProgramacion ?xp_programacion)
+			(ae_conoceFundamentosProg ?conoceFundProg)))
+		)
+
+	(if (eq ?conoceFundProg "B")
+	then
+		;CONCLUSION: Scratch
+		(assert (condiciones
+			(general_tipoDesarrollo ?general_tipoDesarrollo)
+			(ae_perfilDesarrollador ?perfilDes)
+			(ae_xpEnProgramacion ?xp_programacion)
+			(ae_conoceFundamentosProg ?conoceFundProg)))
+		)
+	)
+)
+
+(defrule ae_n2_regla4
+	(ae_perfilDesarrollador ?perfilDes)
+	=>
+	(if (eq ?perfilDes "B")
+	then
+		(printout t crlf "Para cual SO esta dirigida la aplicacion?" crlf)
+		(printout t crlf "(A) Windows" crlf)
+		(printout t crlf "(B) MacOS" crlf)
+		(bind ?SO_Objetivo(readline))
+		(assert(ae_SOObjetivo ?SO_Objetivo))
+	(if (eq ?SO_Objetivo "A")
+	then
+		(printout t crlf "Para que area esta dirigida la aplicacion?" crlf)
+		(printout t crlf "(A) Seguridad" crlf)
+		(printout t crlf "(B) Analisis de Datos" crlf)
+		(printout t crlf "(C) Realidad Virtual" crlf)
+		(bind ?areaAplicacion(readline))
+		(assert(ae_areaDeAplicacion ?areaAplicacion))
+		)
+	)
+)
+
+(defrule ae_n4_regla5
+	(general_tipoDesarrollo ?general_tipoDesarrollo)
+	(ae_perfilDesarrollador ?perfilDes)
+	(ae_SOObjetivo ?SO_Objetivo)
+	(ae_areaDeAplicacion ?areaAplicacion)
+	=>
+	(if (eq ?areaAplicacion "A")
+	then
+		;CONCLUSION: Ruby
+		(assert (condiciones
+			(general_tipoDesarrollo ?general_tipoDesarrollo)
+			(ae_perfilDesarrollador ?perfilDes)
+			(ae_SOObjetivo ?SO_Objetivo)
+			(ae_areaDeAplicacion ?areaAplicacion)))
+		)
+)
+
+(defrule ae_n4_regla6
+	(general_tipoDesarrollo ?general_tipoDesarrollo)
+	(ae_perfilDesarrollador ?perfilDes)
+	(ae_SOObjetivo ?SO_Objetivo)
+	(ae_areaDeAplicacion ?areaAplicacion)
+	=>
+	(if (eq ?areaAplicacion "B")
+	then
+		;CONCLUSION: R
+		(assert (condiciones
+			(general_tipoDesarrollo ?general_tipoDesarrollo)
+			(ae_perfilDesarrollador ?perfilDes)
+			(ae_SOObjetivo ?SO_Objetivo)
+			(ae_areaDeAplicacion ?areaAplicacion)))
+		)
+)
+
+(defrule ae_n4_regla7
+	(general_tipoDesarrollo ?general_tipoDesarrollo)
+	(ae_perfilDesarrollador ?perfilDes)
+	(ae_SOObjetivo ?SO_Objetivo)
+	(ae_areaDeAplicacion ?areaAplicacion)
+	=>
+	(if (eq ?areaAplicacion "C")
+	then
+		;CONCLUSION: C++
+		(assert (condiciones
+			(general_tipoDesarrollo ?general_tipoDesarrollo)
+			(ae_perfilDesarrollador ?perfilDes)
+			(ae_SOObjetivo ?SO_Objetivo)
+			(ae_areaDeAplicacion ?areaAplicacion)))
+		)
+)
+
+(defrule ae_n4_regla8
+	(ae_SOObjetivo ?SO_Objetivo)
+	(general_tipoDesarrollo ?general_tipoDesarrollo)
+	(ae_perfilDesarrollador ?perfilDes)
+	=>
+	(if (eq ?SO_Objetivo "B")
+	then
+		(printout t crlf "Es para manejo de servidores?" crlf)
+		(printout t crlf "(A) Si" crlf)
+		(printout t crlf "(B) No" crlf)
+		(bind ?esParaServer(readline))
+		(assert(ae_paraManejoServidores ?esParaServer))
+	(if (eq ?esParaServer "A")
+	then
+		;CONCLUSION: Perl
+		(assert (condiciones
+			(general_tipoDesarrollo ?general_tipoDesarrollo)
+			(ae_perfilDesarrollador ?perfilDes)
+			(ae_SOObjetivo ?SO_Objetivo)
+			(ae_paraManejoServidores ?esParaServer)))
+		)
+	)
+)
+
+(defrule ae_n5_regla9
+	(ae_SOObjetivo ?SO_Objetivo)
+	(general_tipoDesarrollo ?general_tipoDesarrollo)
+	(ae_perfilDesarrollador ?perfilDes)
+	(ae_paraManejoServidores ?esParaServer)
+	=>
+	(if (eq ?esParaServer "B")
+	then
+		(printout t crlf "Requiere de creacion de scripts?" crlf)
+		(printout t crlf "(A) Si" crlf)
+		(printout t crlf "(B) No" crlf)
+		(bind ?requiereScripts(readline))
+		(assert(ae_requiereScripts ?requiereScripts))
+	(if (eq ?requiereScripts "A")
+	then
+		;CONCLUSION: AppleScript
+		(assert (condiciones
+			(general_tipoDesarrollo ?general_tipoDesarrollo)
+			(ae_perfilDesarrollador ?perfilDes)
+			(ae_SOObjetivo ?SO_Objetivo)
+			(ae_paraManejoServidores ?esParaServer)
+			(ae_requiereScripts ?requiereScripts)))
+		)
+	
+	(if (eq ?requiereScripts "B")
+	then
+		;CONCLUSION: Java
+		(assert (condiciones
+			(general_tipoDesarrollo ?general_tipoDesarrollo)
+			(ae_perfilDesarrollador ?perfilDes)
+			(ae_SOObjetivo ?SO_Objetivo)
+			(ae_paraManejoServidores ?esParaServer)
+			(ae_requiereScripts ?requiereScripts)))
+		)
+	)
+)
+
 
 ;REGLA 1 
 (defrule R1 "JavaScript web"
@@ -248,7 +472,7 @@
 (dw_utilizaFrameworks "A")
 (dw_preferenciaFramework "A"))
 =>
-(printout t "se recomienda el lenguaje JavaScript" crlf)
+(printout t "Se recomienda el lenguaje JavaScript" crlf)
 (refresh regla_inicial)
 )
 
@@ -270,7 +494,7 @@
 (dw_experienciaFrontend "A")
 (dw_utilizaFrameworks "B"))
 =>
-(printout t "se recomienda el lenguaje Sass" crlf))
+(printout t "Se recomienda el lenguaje SASS" crlf))
 
 ;Regla 4
 (defrule R4 "html web"
@@ -279,7 +503,7 @@
 (dw_tipoDesarrollador "A")
 (dw_experienciaFrontend "B"))
 =>
-(printout t "se recomienda el lenguaje html/css" crlf))
+(printout t "Se recomienda los lenguajes HTML/CSS" crlf))
 
 ;Regla 5
 (defrule R5 "PHP web"
@@ -288,7 +512,7 @@
 (dw_tipoDesarrollador "B")
 (dw_gestorBaseDeDatos "A"))
 =>
-(printout t "se recomienda el lenguaje PHP" crlf))
+(printout t "Se recomienda el lenguaje PHP" crlf))
 
 ;Regla 6
 (defrule R6 "C# web"
@@ -298,7 +522,7 @@
 (dw_gestorBaseDeDatos "B")
 (dw_SOUtilizado "A"))
 =>
-(printout t "se recomienda el lenguaje C#" crlf))
+(printout t "Se recomienda el lenguaje C#" crlf))
 
 ;Regla 7
 (defrule R7 "python web"
@@ -308,7 +532,7 @@
 (dw_gestorBaseDeDatos "B")
 (dw_SOUtilizado "B"))
 =>
-(printout t "se recomienda el lenguaje Python" crlf))
+(printout t "Se recomienda el lenguaje Python" crlf))
 
 
 
@@ -317,40 +541,40 @@
 (condiciones
 (general_tipoDesarrollo "B")
 (ae_perfilDesarrollador "A")
-(ae_experienciaEnProgramacion "A")
+(ae_xpEnProgramacion "A")
 (ae_paradigmaProgPreferido "A"))
 =>
-(printout t "se recomienda el lenguaje C" crlf))
+(printout t "Se recomienda el lenguaje C" crlf))
 
 ;Regla 16
 (defrule R16 "Rust escritorio"
 (condiciones
 (general_tipoDesarrollo "B")
 (ae_perfilDesarrollador "A")
-(ae_experienciaEnProgramacion "A")
+(ae_xpEnProgramacion "A")
 (ae_paradigmaProgPreferido "B"))
 =>
-(printout t "se recomienda el lenguaje rust" crlf))
+(printout t "Se recomienda el lenguaje Rust" crlf))
 
 ;Regla 17
 (defrule R17 "VBN escritorio"
 (condiciones
 (general_tipoDesarrollo "B")
 (ae_perfilDesarrollador "A")
-(ae_experienciaEnProgramacion "B")
+(ae_xpEnProgramacion "B")
 (ae_conoceFundamentosProg "A"))
 =>
-(printout t "se recomienda el lenguaje visual basic.net" crlf))
+(printout t "Se recomienda el lenguaje Visual Basic.NET" crlf))
 
 ;regla 18
 (defrule R18 "scratch escritorio"
 (condiciones
 (general_tipoDesarrollo "B")
 (ae_perfilDesarrollador "A")
-(ae_experienciaEnProgramacion "B")
+(ae_xpEnProgramacion "B")
 (ae_conoceFundamentosProg "B"))
 =>
-(printout t "se recomienda el lenguaje scratch" crlf))
+(printout t "Se recomienda el lenguaje Scratch" crlf))
 
 ;regla 19
 (defrule R19 "ruby escritorio"
@@ -360,7 +584,7 @@
 (ae_SOObjetivo "A")
 (ae_areaDeAplicacion "A"))
 =>
-(printout t "se recomienda el lenguaje ruby" crlf))
+(printout t "Se recomienda el lenguaje Ruby" crlf))
 
 ;regla 20
 (defrule R20 "R escritorio"
@@ -370,7 +594,7 @@
 (ae_SOObjetivo "A")
 (ae_areaDeAplicacion "B"))
 =>
-(printout t "se recomienda el lenguaje R" crlf))
+(printout t "Se recomienda el lenguaje R" crlf))
 
 ;Regla 21
 (defrule R21 "C++ escritorio"
@@ -380,7 +604,7 @@
 (ae_SOObjetivo "A")
 (ae_areaDeAplicacion "C"))
 =>
-(printout t "se recomienda el lenguaje C++" crlf))
+(printout t "Se recomienda el lenguaje C++" crlf))
 
 ;Regla 22 
 (defrule R22 "Perl escritorio"
@@ -390,7 +614,7 @@
 (ae_SOObjetivo "B")
 (ae_paraManejoServidores "A"))
 =>
-(printout t "se recomienda el lenguaje Perl" crlf))
+(printout t "Se recomienda el lenguaje Perl" crlf))
 
 ;Regla 23
 (defrule R23 "java escritorio"
@@ -399,9 +623,9 @@
 (ae_perfilDesarrollador "B")
 (ae_SOObjetivo "B")
 (ae_paraManejoServidores "B")
-(ae_requiereScripts "A"))
+(ae_requiereScripts "B"))
 =>
-(printout t "se recomienda el lenguaje Java" crlf))
+(printout t "Se recomienda el lenguaje Java" crlf))
 
 ;Regla 24
 (defrule R24 "applescript escritorio"
@@ -410,6 +634,6 @@
 (ae_perfilDesarrollador "B")
 (ae_SOObjetivo "B")
 (ae_paraManejoServidores "B")
-(ae_requiereScripts "B"))
+(ae_requiereScripts "A"))
 =>
-(printout t "se recomienda el lenguaje applescripts" crlf))
+(printout t "Se recomienda el lenguaje AppleScript" crlf))
