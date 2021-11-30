@@ -117,7 +117,9 @@
 			(dw_utilizaFrameworks ?utilizaFramework)
 			(dw_preferenciaFramework ?prefFramework))
 		)
+		
 	)
+
 )
 
 (defrule dw_n5_regla5
@@ -135,7 +137,8 @@
 			(dw_tipoDesarrollador ?tipoDes)
 			(dw_experienciaFrontend ?xp_frontend)
 			(dw_utilizaFrameworks ?utilizaFramework)
-			(dw_preferenciaFramework ?prefFramework)))
+			(dw_preferenciaFramework ?prefFramework))
+		)
 	)
 )
 
@@ -188,6 +191,7 @@
 		(printout t crlf "(B) MacOS/Linux" crlf)
 		(bind ?SOUtilizadoDesarrollar(readline))
 		(assert(dw_SOUtilizado ?SOUtilizadoDesarrollar))
+		
 	(if (eq ?gestorBD "A")
 	then
 		;CONCLUSION: C#
@@ -234,7 +238,9 @@
 (dw_utilizaFrameworks "A")
 (dw_preferenciaFramework "A"))
 =>
-(printout t "se recomienda el lenguaje JavaScript" crlf))
+(printout t "se recomienda el lenguaje JavaScript" crlf)
+(refresh regla_inicial)
+)
 
 ;;Regla 2
 (defrule R2 "Java web"
