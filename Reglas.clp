@@ -550,7 +550,8 @@
 (ae_paradigmaProgPreferido "A"))
 =>
 (printout t "Se recomienda el lenguaje C" crlf)
-(refresh regla_inicial)
+(retract *)
+(assert(iniciar))
 )
 
 ;Regla 16
@@ -562,7 +563,8 @@
 (ae_paradigmaProgPreferido "B"))
 =>
 (printout t "Se recomienda el lenguaje Rust" crlf)
-(refresh regla_inicial)
+(retract *)
+(assert(iniciar))
 )
 
 ;Regla 17
@@ -574,7 +576,8 @@
 (ae_conoceFundamentosProg "A"))
 =>
 (printout t "Se recomienda el lenguaje Visual Basic.NET" crlf)
-(refresh regla_inicial)
+(retract *)
+(assert(iniciar))
 )
 
 ;regla 18
@@ -586,7 +589,8 @@
 (ae_conoceFundamentosProg "B"))
 =>
 (printout t "Se recomienda el lenguaje Scratch" crlf)
-(refresh regla_inicial)
+(retract *)
+(assert(iniciar))
 )
 
 ;regla 19
@@ -598,7 +602,8 @@
 (ae_areaDeAplicacion "A"))
 =>
 (printout t "Se recomienda el lenguaje Ruby" crlf)
-(refresh regla_inicial)
+(retract *)
+(assert(iniciar))
 )
 
 ;regla 20
@@ -610,7 +615,8 @@
 (ae_areaDeAplicacion "B"))
 =>
 (printout t "Se recomienda el lenguaje R" crlf)
-(refresh regla_inicial)
+(retract *)
+(assert(iniciar))
 )
 
 ;Regla 21
@@ -622,7 +628,8 @@
 (ae_areaDeAplicacion "C"))
 =>
 (printout t "Se recomienda el lenguaje C++" crlf)
-(refresh regla_inicial)
+(retract *)
+(assert(iniciar))
 )
 
 ;Regla 22 
@@ -634,7 +641,8 @@
 (ae_paraManejoServidores "A"))
 =>
 (printout t "Se recomienda el lenguaje Perl" crlf)
-(refresh regla_inicial)
+(retract *)
+(assert(iniciar))
 )
 
 ;Regla 23
@@ -647,7 +655,8 @@
 (ae_requiereScripts "B"))
 =>
 (printout t "Se recomienda el lenguaje Java" crlf)
-(refresh regla_inicial)
+(retract *)
+(assert(iniciar))
 )
 
 ;Regla 24
@@ -660,5 +669,6 @@
 (ae_requiereScripts "A"))
 =>
 (printout t "Se recomienda el lenguaje AppleScript" crlf)
-(refresh regla_inicial)
+(retract *)
+(assert(iniciar))
 )
