@@ -57,6 +57,8 @@
 
 (defrule dw_n4_regla2
 	(dw_experienciaFrontend ?xp_frontend)
+	(general_tipoDesarrollo ?general_tipoDesarrollo)
+	(dw_tipoDesarrollador ?tipoDes)
 	=>
 	(if (eq ?xp_frontend "A")
 	then
@@ -77,17 +79,11 @@
 )
 
 (defrule dw_n4_regla3
+	(dw_utilizaFrameworks ?utilizaFramework)
 	(dw_experienciaFrontend ?xp_frontend)
 	(general_tipoDesarrollo ?general_tipoDesarrollo)
 	(dw_tipoDesarrollador ?tipoDes)
 	=>
-	(if (eq ?xp_frontend "A")
-	then
-		(printout t crlf "Utiliza Framework para trabajar?" crlf)
-		(printout t crlf "(A) Si" crlf)
-		(printout t crlf "(B) No" crlf)
-		(bind ?utilizaFramework(readline))
-		(assert(dw_utilizaFrameworks ?utilizaFramework))
 	(if (eq ?utilizaFramework "B")
 	then
 		;CONCLUSION: SASS
@@ -97,7 +93,6 @@
 			(dw_experienciaFrontend ?xp_frontend)
 			(dw_utilizaFrameworks ?utilizaFramework)))
 		)
-	)
 )
 
 (defrule dw_n4_regla10
