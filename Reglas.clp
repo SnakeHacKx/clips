@@ -261,7 +261,9 @@
 (dw_utilizaFrameworks "A")
 (dw_preferenciaFramework "B"))
 =>
-(printout t "Se recomienda el lenguaje Java" crlf))
+(printout t "Se recomienda el lenguaje Java" crlf)
+(refresh regla_inicial)
+)
 
 ;;Regla 3
 (defrule R3 "Sass web"
@@ -270,7 +272,9 @@
 (dw_experienciaFrontend "A")
 (dw_utilizaFrameworks "B"))
 =>
-(printout t "se recomienda el lenguaje Sass" crlf))
+(printout t "se recomienda el lenguaje Sass" crlf)
+(refresh regla_inicial)
+)
 
 ;Regla 4
 (defrule R4 "html web"
@@ -279,7 +283,9 @@
 (dw_tipoDesarrollador "A")
 (dw_experienciaFrontend "B"))
 =>
-(printout t "se recomienda el lenguaje html/css" crlf))
+(printout t "se recomienda el lenguaje html/css" crlf)
+(refresh regla_inicial)
+)
 
 ;Regla 5
 (defrule R5 "PHP web"
@@ -288,7 +294,9 @@
 (dw_tipoDesarrollador "B")
 (dw_gestorBaseDeDatos "A"))
 =>
-(printout t "se recomienda el lenguaje PHP" crlf))
+(printout t "se recomienda el lenguaje PHP" crlf)
+(refresh regla_inicial)
+)
 
 ;Regla 6
 (defrule R6 "C# web"
@@ -298,7 +306,9 @@
 (dw_gestorBaseDeDatos "B")
 (dw_SOUtilizado "A"))
 =>
-(printout t "se recomienda el lenguaje C#" crlf))
+(printout t "se recomienda el lenguaje C#" crlf)
+(refresh regla_inicial)
+)
 
 ;Regla 7
 (defrule R7 "python web"
@@ -308,7 +318,9 @@
 (dw_gestorBaseDeDatos "B")
 (dw_SOUtilizado "B"))
 =>
-(printout t "se recomienda el lenguaje Python" crlf))
+(printout t "se recomienda el lenguaje Python" crlf)
+(refresh regla_inicial)
+)
 
 
 
@@ -320,7 +332,9 @@
 (ae_experienciaEnProgramacion "A")
 (ae_paradigmaProgPreferido "A"))
 =>
-(printout t "se recomienda el lenguaje C" crlf))
+(printout t "se recomienda el lenguaje C" crlf)
+(refresh regla_inicial)
+)
 
 ;Regla 16
 (defrule R16 "Rust escritorio"
@@ -330,7 +344,9 @@
 (ae_experienciaEnProgramacion "A")
 (ae_paradigmaProgPreferido "B"))
 =>
-(printout t "se recomienda el lenguaje rust" crlf))
+(printout t "se recomienda el lenguaje rust" crlf)
+(refresh regla_inicial)
+)
 
 ;Regla 17
 (defrule R17 "VBN escritorio"
@@ -340,7 +356,9 @@
 (ae_experienciaEnProgramacion "B")
 (ae_conoceFundamentosProg "A"))
 =>
-(printout t "se recomienda el lenguaje visual basic.net" crlf))
+(printout t "se recomienda el lenguaje visual basic.net" crlf)
+(refresh regla_inicial)
+)
 
 ;regla 18
 (defrule R18 "scratch escritorio"
@@ -350,7 +368,9 @@
 (ae_experienciaEnProgramacion "B")
 (ae_conoceFundamentosProg "B"))
 =>
-(printout t "se recomienda el lenguaje scratch" crlf))
+(printout t "se recomienda el lenguaje scratch" crlf)
+(refresh regla_inicial)
+)
 
 ;regla 19
 (defrule R19 "ruby escritorio"
@@ -360,7 +380,9 @@
 (ae_SOObjetivo "A")
 (ae_areaDeAplicacion "A"))
 =>
-(printout t "se recomienda el lenguaje ruby" crlf))
+(printout t "se recomienda el lenguaje ruby" crlf)
+(refresh regla_inicial)
+)
 
 ;regla 20
 (defrule R20 "R escritorio"
@@ -370,7 +392,9 @@
 (ae_SOObjetivo "A")
 (ae_areaDeAplicacion "B"))
 =>
-(printout t "se recomienda el lenguaje R" crlf))
+(printout t "se recomienda el lenguaje R" crlf)
+(refresh regla_inicial)
+)
 
 ;Regla 21
 (defrule R21 "C++ escritorio"
@@ -380,7 +404,9 @@
 (ae_SOObjetivo "A")
 (ae_areaDeAplicacion "C"))
 =>
-(printout t "se recomienda el lenguaje C++" crlf))
+(printout t "se recomienda el lenguaje C++" crlf)
+(refresh regla_inicial)
+)
 
 ;Regla 22 
 (defrule R22 "Perl escritorio"
@@ -390,7 +416,9 @@
 (ae_SOObjetivo "B")
 (ae_paraManejoServidores "A"))
 =>
-(printout t "se recomienda el lenguaje Perl" crlf))
+(printout t "se recomienda el lenguaje Perl" crlf)
+(refresh regla_inicial)
+)
 
 ;Regla 23
 (defrule R23 "java escritorio"
@@ -401,7 +429,9 @@
 (ae_paraManejoServidores "B")
 (ae_requiereScripts "A"))
 =>
-(printout t "se recomienda el lenguaje Java" crlf))
+(printout t "se recomienda el lenguaje Java" crlf)
+(refresh regla_inicial)
+)
 
 ;Regla 24
 (defrule R24 "applescript escritorio"
@@ -412,4 +442,6 @@
 (ae_paraManejoServidores "B")
 (ae_requiereScripts "B"))
 =>
-(printout t "se recomienda el lenguaje applescripts" crlf))
+(printout t "se recomienda el lenguaje applescripts" crlf)
+(refresh regla_inicial)
+)
