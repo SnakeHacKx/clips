@@ -39,7 +39,7 @@
 
 ;DEFINIENDO REGLA INICIAL
 (defrule regla_inicial
-	(initial-fact)
+	(iniciar go)
 	=>
 	(printout t crlf "Para que tipo de desarrollo lo utilizara?" crlf)
 	(printout t crlf "(A) Web" crlf)
@@ -94,6 +94,8 @@
 
 (defrule dw_n4_regla3
 	(dw_experienciaFrontend ?xp_frontend)
+	(general_tipoDesarrollo ?general_tipoDesarrollo)
+	(dw_tipoDesarrollador ?tipoDes)
 	=>
 	(if (eq ?xp_frontend "A")
 	then
@@ -116,6 +118,10 @@
 
 (defrule dw_n5_regla4
 	(dw_preferenciaFramework ?prefFramework)
+	(general_tipoDesarrollo ?general_tipoDesarrollo)
+	(dw_tipoDesarrollador ?tipoDes)
+	(dw_experienciaFrontend ?xp_frontend)
+	(dw_utilizaFrameworks ?utilizaFramework)
 	=>
 	(if (eq ?prefFramework "A")
 	then
@@ -125,12 +131,17 @@
 			(dw_tipoDesarrollador ?tipoDes)
 			(dw_experienciaFrontend ?xp_frontend)
 			(dw_utilizaFrameworks ?utilizaFramework)
-			(dw_preferenciaFramework ?prefFramework)))
+			(dw_preferenciaFramework ?prefFramework))
+		)
 	)
 )
 
 (defrule dw_n5_regla5
 	(dw_preferenciaFramework ?prefFramework)
+	(general_tipoDesarrollo ?general_tipoDesarrollo)
+	(dw_tipoDesarrollador ?tipoDes)
+	(dw_experienciaFrontend ?xp_frontend)
+	(dw_utilizaFrameworks ?utilizaFramework)
 	=>
 	(if (eq ?prefFramework "B")
 	then
@@ -167,6 +178,8 @@
 
 (defrule dw_n3_regla7
 	(dw_gestorBaseDeDatos ?gestorBD)
+	(general_tipoDesarrollo ?general_tipoDesarrollo)
+	(dw_tipoDesarrollador ?tipoDes)
 	=>
 	(if (eq ?gestorBD "A")
 	then
@@ -175,11 +188,14 @@
 			(general_tipoDesarrollo ?general_tipoDesarrollo)
 			(dw_tipoDesarrollador ?tipoDes)
 			(dw_gestorBaseDeDatos ?gestorBD))
+		)
 	)
 )
 
 (defrule dw_n4_regla8
 	(dw_gestorBaseDeDatos ?gestorBD)
+	(general_tipoDesarrollo ?general_tipoDesarrollo)
+	(dw_tipoDesarrollador ?tipoDes)
 	=>
 	(if (eq ?gestorBD "B")
 	then
@@ -198,11 +214,14 @@
 			(dw_tipoDesarrollador ?tipoDes)
 			(dw_gestorBaseDeDatos ?gestorBD)
 			(dw_SOUtilizado ?SOUtilizadoDesarrollar))
-	)
+		)
+	)	
 )
 
 (defrule dw_n4_regla9
 	(dw_gestorBaseDeDatos ?gestorBD)
+	(general_tipoDesarrollo ?general_tipoDesarrollo)
+	(dw_tipoDesarrollador ?tipoDes)
 	=>
 	(if (eq ?gestorBD "B")
 	then
@@ -221,6 +240,7 @@
 			(dw_tipoDesarrollador ?tipoDes)
 			(dw_gestorBaseDeDatos ?gestorBD)
 			(dw_SOUtilizado ?SOUtilizadoDesarrollar))
+		)
 	)
 )
 
