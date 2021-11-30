@@ -100,6 +100,21 @@
 	)
 )
 
+(defrule dw_n4_regla10
+	(dw_experienciaFrontend ?xp_frontend)
+	(general_tipoDesarrollo ?general_tipoDesarrollo)
+	(dw_tipoDesarrollador ?tipoDes)
+	=>
+	(if (eq ?xp_frontend "B")
+	then
+		;CONCLUSION: HTML/CSS
+		(assert (condiciones
+			(general_tipoDesarrollo ?general_tipoDesarrollo)
+			(dw_tipoDesarrollador ?tipoDes)
+			(dw_experienciaFrontend ?xp_frontend)))
+		)
+)
+
 (defrule dw_n5_regla4
 	(dw_preferenciaFramework ?prefFramework)
 	(general_tipoDesarrollo ?general_tipoDesarrollo)
