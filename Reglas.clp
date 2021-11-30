@@ -139,14 +139,8 @@
 
 (defrule dw_n2_regla6
 	(general_tipoDesarrollo ?general_tipoDesarrollo)
+	(dw_tipoDesarrollador ?tipoDes)
 	=>
-	(if (eq ?general_tipoDesarrollo "A")
-	then
-		(printout t crlf "Que tipo de desarrollador es?" crlf)
-		(printout t crlf "(A) Frontend" crlf)
-		(printout t crlf "(B) Backend" crlf)
-		(bind ?tipoDes(readline))
-		(assert(dw_tipoDesarrollador ?tipoDes))
 	(if (eq ?tipoDes "B")
 	then
 		(printout t crlf "Que gestor de bases de datos desea utilizar?" crlf)
@@ -155,7 +149,6 @@
 		(bind ?gestorBD(readline))
 		(assert(dw_gestorBaseDeDatos ?gestorBD))
 		)
-	)
 )
 
 (defrule dw_n3_regla7
@@ -203,14 +196,8 @@
 	(dw_gestorBaseDeDatos ?gestorBD)
 	(general_tipoDesarrollo ?general_tipoDesarrollo)
 	(dw_tipoDesarrollador ?tipoDes)
+	(dw_SOUtilizado ?SOUtilizadoDesarrollar)
 	=>
-	(if (eq ?gestorBD "B")
-	then
-		(printout t crlf "Que SO utilizara para desarrollar?" crlf)
-		(printout t crlf "(A) Windows" crlf)
-		(printout t crlf "(B) MacOS/Linux" crlf)
-		(bind ?SOUtilizadoDesarrollar(readline))
-		(assert(dw_SOUtilizado ?SOUtilizadoDesarrollar))
 	(if (eq ?gestorBD "B")
 	then
 		;CONCLUSION: Python
@@ -220,7 +207,6 @@
 			(dw_gestorBaseDeDatos ?gestorBD)
 			(dw_SOUtilizado ?SOUtilizadoDesarrollar)))
 		)
-	)
 )
 
 (defrule dw_n4_regla10
