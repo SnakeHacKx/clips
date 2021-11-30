@@ -24,7 +24,7 @@
 
 ;DEFINIENDO REGLA INICIAL
 (defrule regla_inicial
-	(iniciar go)
+	(iniciar)
 	=>
 	(printout t crlf "Para que tipo de desarrollo lo utilizara?" crlf)
 	(printout t crlf "(A) Web" crlf)
@@ -118,7 +118,9 @@
 			(dw_utilizaFrameworks ?utilizaFramework)
 			(dw_preferenciaFramework ?prefFramework))
 		)
+		
 	)
+
 )
 
 (defrule dw_n5_regla5
@@ -136,7 +138,8 @@
 			(dw_tipoDesarrollador ?tipoDes)
 			(dw_experienciaFrontend ?xp_frontend)
 			(dw_utilizaFrameworks ?utilizaFramework)
-			(dw_preferenciaFramework ?prefFramework)))
+			(dw_preferenciaFramework ?prefFramework))
+		)
 	)
 )
 
@@ -189,8 +192,7 @@
 		(printout t crlf "(B) MacOS/Linux" crlf)
 		(bind ?SOUtilizadoDesarrollar(readline))
 		(assert(dw_SOUtilizado ?SOUtilizadoDesarrollar))
-		)
-	)
+		
 	(if (eq ?gestorBD "A")
 	then
 		;CONCLUSION: C#
@@ -198,7 +200,7 @@
 			(general_tipoDesarrollo ?general_tipoDesarrollo)
 			(dw_tipoDesarrollador ?tipoDes)
 			(dw_gestorBaseDeDatos ?gestorBD)
-			(dw_SOUtilizado ?SOUtilizadoDesarrollar))
+			(dw_SOUtilizado ?SOUtilizadoDesarrollar)))
 		)
 	)	
 )
@@ -215,8 +217,6 @@
 		(printout t crlf "(B) MacOS/Linux" crlf)
 		(bind ?SOUtilizadoDesarrollar(readline))
 		(assert(dw_SOUtilizado ?SOUtilizadoDesarrollar))
-		)
-	)
 	(if (eq ?gestorBD "B")
 	then
 		;CONCLUSION: Python
@@ -224,7 +224,7 @@
 			(general_tipoDesarrollo ?general_tipoDesarrollo)
 			(dw_tipoDesarrollador ?tipoDes)
 			(dw_gestorBaseDeDatos ?gestorBD)
-			(dw_SOUtilizado ?SOUtilizadoDesarrollar))
+			(dw_SOUtilizado ?SOUtilizadoDesarrollar)))
 		)
 	)
 )
@@ -239,7 +239,9 @@
 (dw_utilizaFrameworks "A")
 (dw_preferenciaFramework "A"))
 =>
-(printout t "se recomienda el lenguaje JavaScript" crlf))
+(printout t "se recomienda el lenguaje JavaScript" crlf)
+(refresh regla_inicial)
+)
 
 ;;Regla 2
 (defrule R2 "Java web"
