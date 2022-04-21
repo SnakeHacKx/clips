@@ -13,14 +13,13 @@
 
 
     ;Usando Cerebro
-	(slot uc_perfilDesarrollador (type STRING)(default "ninguno"))
-	(slot ae_xpEnProgramacion (type STRING)(default "ninguno"))
-	(slot ae_paradigmaProgPreferido (type STRING)(default "ninguno"))
-	(slot ae_conoceFundamentosProg (type STRING)(default "ninguno"))
-	(slot ae_SOObjetivo (type STRING)(default "ninguno"))
-	(slot ae_areaDeAplicacion (type STRING)(default "ninguno"))
-	(slot ae_paraManejoServidores (type STRING)(default "ninguno"))
-	(slot ae_requiereScripts (type STRING)(default "ninguno"))
+	(slot uc_tipoJuego (type STRING)(default "ninguno"))
+	(slot uc_desarrolloJuego (type STRING)(default "ninguno"))
+	(slot uc_estiloJuego (type STRING)(default "ninguno"))
+	(slot uc_estiloDibujo (type STRING)(default "ninguno"))
+	(slot uc_estiloDesarrollo (type STRING)(default "ninguno"))
+	(slot uc_tipoTexturas (type STRING)(default "ninguno"))
+	(slot uc_controlEnSimulacion (type STRING)(default "ninguno"))
 )
 ;REGLAS DE CONTROL
 
@@ -240,6 +239,189 @@
 	)	
 )
 
+;REGLAS PARA JUGADOR QUE USA MUCHO EL CEREBRO
+
+(defrule uc_regla1
+	(general_formaDeJugar ?general_formaDeJugar)
+	=>
+	(if (eq ?general_formaDeJugar "A")
+	then
+		(printout t crlf "Que tipo de juego prefiere?" crlf)
+		(printout t crlf "(A) Puzzles" crlf)
+		(printout t crlf "(B) Simulacion" crlf)
+		(bind ?tipoJuego(readline))
+		(assert(uc_tipoJuego ?tipoJuego))
+	
+	(if (eq ?tipoJuego "A")
+	then
+		(printout t crlf "Como prefiere el desarrollo del juego?" crlf)
+		(printout t crlf "(A) Lineal" crlf)
+		(printout t crlf "(B) Historia elaborada" crlf)
+		(bind ?desJuego(readline))
+		(assert(uc_desarrolloJuego ?desJuego))
+		)
+	)
+)
+
+(defrule ca_regla2
+	(general_formaDeJugar ?general_formaDeJugar)
+	(uc_tipoJuego ?tipoJuego)
+	(uc_desarrolloJuego ?desJuego)
+	=>
+	(if (eq ?aventuraPref "B")
+	then
+		(printout t crlf "Cual estilo prefiere?" crlf)
+		(printout t crlf "(A) Retro" crlf)
+		(printout t crlf "(B) Moderno" crlf)
+		(bind ?estiloJuego(readline))
+		(assert(uc_estiloJuego ?estiloJuego))
+
+	(if (eq ?estiloJuego "A")
+	then
+		;CONCLUSION: TETRIS
+		(assert (condiciones
+			(general_formaDeJugar ?general_formaDeJugar)
+			(uc_tipoJuego ?tipoJuego)
+			(uc_desarrolloJuego ?desJuego)
+			(uc_estiloJuego ?estiloJuego)))
+		)
+
+	(if (eq ?estiloJuego "B")
+	then
+		;CONCLUSION: LUMINES PUZZLE FUSION
+		(assert (condiciones
+			(general_formaDeJugar ?general_formaDeJugar)
+			(uc_tipoJuego ?tipoJuego)
+			(uc_desarrolloJuego ?desJuego)
+			(uc_estiloJuego ?estiloJuego)))
+		)
+	)	
+)
+
+(defrule ca_regla3
+	(general_formaDeJugar ?general_formaDeJugar)
+	(uc_tipoJuego ?tipoJuego)
+	(uc_desarrolloJuego ?desJuego)
+	=>
+	(if (eq ?desJuego "B")
+	then
+		(printout t crlf "Cual ambientacion le atrae en el estilo de dibujo?" crlf)
+		(printout t crlf "(A) Oscuro/Tenebroso" crlf)
+		(printout t crlf "(B) Colorido/Alegre" crlf)
+		(bind ?estiloDibujo(readline))
+		(assert(uc_estiloDibujo ?estiloDibujo))
+
+	(if (eq ?estiloDibujo "A")
+	then
+		;CONCLUSION: LIMBO
+		(assert (condiciones
+			(general_formaDeJugar ?general_formaDeJugar)
+			(uc_tipoJuego ?tipoJuego)
+			(uc_desarrolloJuego ?desJuego)
+			(uc_estiloDibujo ?estiloDibujo)))
+		)
+	)	
+)
+
+(defrule ca_regla4
+	(general_formaDeJugar ?general_formaDeJugar)
+	(uc_tipoJuego ?tipoJuego)
+	(uc_desarrolloJuego ?desJuego)
+	(uc_estiloDibujo ?estiloDibujo)
+	=>
+	(if (eq ?estiloDibujo "B")
+	then
+		(printout t crlf "Estilo de desarrollo?" crlf)
+		(printout t crlf "(A) Oriental" crlf)
+		(printout t crlf "(B) Occidental" crlf)
+		(bind ?estiloDes(readline))
+		(assert(uc_estiloDesarrollo ?estiloDes))
+
+	(if (eq ?estiloDes "A")
+	then
+		;CONCLUSION: REROLL
+		(assert (condiciones
+			(general_formaDeJugar ?general_formaDeJugar)
+			(uc_tipoJuego ?tipoJuego)
+			(uc_desarrolloJuego ?desJuego)
+			(uc_estiloDibujo ?estiloDibujo)
+			(uc_estiloDesarrollo ?estiloDes)))
+		)
+	)	
+)
+
+(defrule uc_regla5
+	(general_formaDeJugar ?general_formaDeJugar)
+	(uc_tipoJuego ?tipoJuego)
+	(uc_desarrolloJuego ?desJuego)
+	(uc_estiloDibujo ?estiloDibujo)
+	(uc_estiloDesarrollo ?estiloDes)
+	=>
+	(if (eq ?estiloDes "B")
+	then
+		(printout t crlf "Que tipo de texturas le gustan?" crlf)
+		(printout t crlf "(A) Indi" crlf)
+		(printout t crlf "(B) Elaboradas" crlf)
+		(bind ?tipoTexturas(readline))
+		(assert(uc_tipoTexturas ?tipoTexturas))
+		
+	(if (eq ?tipoTexturas "A")
+	then
+		;CONCLUSION: BRAID
+		(assert (condiciones
+			(general_formaDeJugar ?general_formaDeJugar)
+			(uc_tipoJuego ?tipoJuego)
+			(uc_desarrolloJuego ?desJuego)
+			(uc_estiloDibujo ?estiloDibujo)
+			(uc_estiloDesarrollo ?estiloDes)
+			(uc_tipoTexturas ?tipoTexturas)))
+		)
+
+	(if (eq ?tipoTexturas "B")
+	then
+		;CONCLUSION: PORTAL 2
+		(assert (condiciones
+			(general_formaDeJugar ?general_formaDeJugar)
+			(uc_tipoJuego ?tipoJuego)
+			(uc_desarrolloJuego ?desJuego)
+			(uc_estiloDibujo ?estiloDibujo)
+			(uc_estiloDesarrollo ?estiloDes)
+			(uc_tipoTexturas ?tipoTexturas)))
+		)
+	)	
+)
+
+(defrule uc_regla6
+	(general_formaDeJugar ?general_formaDeJugar)
+	(uc_tipoJuego ?tipoJuego)
+	=>
+	(if (eq ?tipoJuego "B")
+	then
+		(printout t crlf "Que le gustaria controlar en la simulacion?" crlf)
+		(printout t crlf "(A) Humanos" crlf)
+		(printout t crlf "(B) Ciudades" crlf)
+		(bind ?controlEnSimulacion(readline))
+		(assert(uc_controlEnSimulacion ?controlEnSimulacion))
+		
+	(if (eq ?controlEnSimulacion "A")
+	then
+		;CONCLUSION: THE SIMS 4
+		(assert (condiciones
+			(general_formaDeJugar ?general_formaDeJugar)
+			(uc_tipoJuego ?tipoJuego)
+			(uc_controlEnSimulacion ?controlEnSimulacion)))
+		)
+
+	(if (eq ?controlEnSimulacion "B")
+	then
+		;CONCLUSION: SIM CITY BUILDIT
+		(assert (condiciones
+			(general_formaDeJugar ?general_formaDeJugar)
+			(uc_tipoJuego ?tipoJuego)
+			(uc_controlEnSimulacion ?controlEnSimulacion)))
+		)
+	)	
+)
 
 
 
