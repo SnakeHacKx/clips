@@ -169,6 +169,7 @@
 (defrule ca_regla6
 	(general_formaDeJugar ?general_formaDeJugar)
 	(ca_reflejosBuenos ?reflejos)
+	(ca_comoEsTuTiming ?timing)
 	(ca_aventuraPreferida ?aventuraPref)
 	(ca_protaInteresante ?protaInteresante)
 	=>
@@ -263,12 +264,12 @@
 	)
 )
 
-(defrule ca_regla2
+(defrule uc_regla2
 	(general_formaDeJugar ?general_formaDeJugar)
 	(uc_tipoJuego ?tipoJuego)
 	(uc_desarrolloJuego ?desJuego)
 	=>
-	(if (eq ?aventuraPref "B")
+	(if (eq ?desJuego "B")
 	then
 		(printout t crlf "Cual estilo prefiere?" crlf)
 		(printout t crlf "(A) Retro" crlf)
