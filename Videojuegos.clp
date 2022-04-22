@@ -245,7 +245,7 @@
 (defrule uc_regla1
 	(general_formaDeJugar ?general_formaDeJugar)
 	=>
-	(if (eq ?general_formaDeJugar "A")
+	(if (eq ?general_formaDeJugar "B")
 	then
 		(printout t crlf "Que tipo de juego prefiere?" crlf)
 		(printout t crlf "(A) Puzzles" crlf)
@@ -269,7 +269,7 @@
 	(uc_tipoJuego ?tipoJuego)
 	(uc_desarrolloJuego ?desJuego)
 	=>
-	(if (eq ?desJuego "B")
+	(if (eq ?desJuego "A")
 	then
 		(printout t crlf "Cual estilo prefiere?" crlf)
 		(printout t crlf "(A) Retro" crlf)
