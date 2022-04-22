@@ -439,10 +439,10 @@
 ;Regla 1
 (defrule R1 "Tetris"
 (condiciones
-(modo_de_juego "B")
-(tipo_de_juego "A")
-(desarrollo_lineal "A")
-(estilo_retro "A")
+(general_formaDeJugar "B")
+(uc_tipoJuego "A")
+(uc_desarrolloJuego "A")
+(uc_estiloJuego "A"))
 =>
 (printout t "Se recomienda el mitico juego de Tetris" crlf)
 (retract *)
@@ -452,10 +452,10 @@
 ;Regla 2
 (defrule R2 "Lumines"
 (condiciones
-(modo_de_juego "B")
-(tipo_de_juego "A")
-(desarrollo_lineal "A")
-(estilo_retro "B")
+(general_formaDeJugar "B")
+(uc_tipoJuego "A")
+(uc_desarrolloJuego "A")
+(uc_estiloJuego "B"))
 =>
 (printout t "Se recomienda el juego Lumines" crlf)
 (retract *)
@@ -465,10 +465,10 @@
 ;Regla 3
 (defrule R3 "Limbo"
 (condiciones
-(modo_de_juego "B")
-(tipo_de_juego "A")
-(desarrollo_lineal "B")
-(Ambientacion_en_el_dibujo "A")
+(general_formaDeJugar "B")
+(uc_tipoJuego "A")
+(uc_desarrolloJuego "B")
+(uc_estiloDibujo "A"))
 =>
 (printout t "Se recomienda el juego Limbo" crlf)
 (retract *)
@@ -478,11 +478,11 @@
 ;Regla 4
 (defrule R4 "Reroll"
 (condiciones
-(modo_de_juego "B")
-(tipo_de_juego "A")
-(desarrollo_lineal "B")
-(Ambientacion_en_el_dibujo "B")
-(Estilo_de_desarrollo "A")
+(general_formaDeJugar "B")
+(uc_tipoJuego "A")
+(uc_desarrolloJuego "B")
+(uc_estiloDibujo "B")
+(uc_estiloDesarrollo "A"))
 =>
 (printout t "Se recomienda el juego Reroll" crlf)
 (retract *)
@@ -492,12 +492,12 @@
 ;Regla 5
 (defrule R5 "Braid"
 (condiciones
-(modo_de_juego "B")
-(tipo_de_juego "A")
-(desarrollo_lineal "B")
-(Ambientacion_en_el_dibujo "B")
-(Estilo_de_desarrollo "B")
-(tipo_de_texturas "A")
+(general_formaDeJugar "B")
+(uc_tipoJuego "A")
+(uc_desarrolloJuego "B")
+(uc_estiloDibujo "B")
+(uc_estiloDesarrollo "B")
+(uc_tipoTexturas "A"))
 =>
 (printout t "Se recomienda el juego Braid" crlf)
 (retract *)
@@ -507,12 +507,12 @@
 ;Regla 6
 (defrule R6 "Portal"
 (condiciones
-(modo_de_juego "B")
-(tipo_de_juego "B")
-(desarrollo_lineal "B")
-(Ambientacion_en_el_dibujo "B")
-(Estilo_de_desarrollo "B")
-(tipo_de_texturas "B")
+(general_formaDeJugar "B")
+(uc_tipoJuego "B")
+(uc_desarrolloJuego "B")
+(uc_estiloDibujo "B")
+(uc_estiloDesarrollo "B")
+(uc_tipoTexturas "B"))
 =>
 (printout t "Se recomienda el juego Portal" crlf)
 (retract *)
@@ -522,9 +522,9 @@
 ;Regla 7
 (defrule R7 "Sims4"
 (condiciones
-(modo_de_juego "B")
-(tipo_de_juego "B")
-(que_controlar_simulacion "A")
+(general_formaDeJugar "B")
+(uc_tipoJuego "B")
+(uc_controlEnSimulacion "A"))
 =>
 (printout t "Se recomienda el juego Sims4" crlf)
 (retract *)
@@ -534,9 +534,9 @@
 ;Regla 8
 (defrule R8 "Sim city"
 (condiciones
-(modo_de_juego "B")
-(tipo_de_juego "B")
-(que_controlar_simulacion "B")
+(general_formaDeJugar "B")
+(uc_tipoJuego "B")
+(uc_controlEnSimulacion "B"))
 =>
 (printout t "Se recomienda el juego Sim city" crlf)
 (retract *)
@@ -546,10 +546,10 @@
 ;Regla 9
 (defrule R9 "rock band"
 (condiciones
-(modo_de_juego "A")
-(reflejos "A")
-(timing "A")
-(tematica "A")
+(general_formaDeJugar "A")
+(ca_reflejosBuenos "A")
+(ca_comoEsTuTiming "A")
+(ca_tematicaPreferida "A"))
 =>
 (printout t "Se recomienda el juego Rock Band" crlf)
 (retract *)
@@ -559,10 +559,10 @@
 ;Regla 10
 (defrule R10 "Pac-man"
 (condiciones
-(modo_de_juego "A")
-(reflejos "A")
-(timing "B")
-(cantidad_botones "A")
+(general_formaDeJugar "A")
+(ca_reflejosBuenos "A")
+(ca_comoEsTuTiming "B")
+(ca_cuantosBotones "A"))
 =>
 (printout t "Se recomienda el juego Pac-Man" crlf)
 (retract *)
@@ -572,10 +572,10 @@
 ;Regla 11
 (defrule R11 "Punch out"
 (condiciones
-(modo_de_juego "A")
-(reflejos "A")
-(timing "B")
-(cantidad_botones "B")
+(general_formaDeJugar "A")
+(ca_reflejosBuenos "A")
+(ca_comoEsTuTiming "B")
+(ca_cuantosBotones "B"))
 =>
 (printout t "Se recomienda el juego Punch out" crlf)
 (retract *)
@@ -585,11 +585,11 @@
 ;Regla 12
 (defrule R12 "The witcher wild hunt"
 (condiciones
-(modo_de_juego "A")
-(reflejos "B")
-(montruos_carreras "A")
-(protagonista "A")
-(perspectiva "A")
+(general_formaDeJugar "A")
+(ca_reflejosBuenos "B")
+(ca_aventuraPreferida "A")
+(ca_protaInteresante "A")
+(ca_tipoCamara "A"))
 =>
 (printout t "Se recomienda el juego The Witcher wild hunt" crlf)
 (retract *)
@@ -598,11 +598,11 @@
 ;Regla 13
 (defrule R13 "The witcher enhanced edition"
 (condiciones
-(modo_de_juego "A")
-(reflejos "B")
-(montruos_carreras "A")
-(protagonista "A")
-(perspectiva "B")
+(general_formaDeJugar "A")
+(ca_reflejosBuenos "B")
+(ca_aventuraPreferida "A")
+(ca_protaInteresante "A")
+(ca_tipoCamara "B"))
 =>
 (printout t "Se recomienda el juego The Witcher Enhanced edition" crlf)
 (retract *)
@@ -612,10 +612,10 @@
 ;Regla 14
 (defrule R14 "FNAF"
 (condiciones
-(modo_de_juego "A")
-(reflejos "B")
-(montruos_carreras "A")
-(protagonista "B")
+(general_formaDeJugar "A")
+(ca_reflejosBuenos "B")
+(ca_aventuraPreferida "A")
+(ca_protaInteresante "B"))
 =>
 (printout t "Se recomienda el juego Five night at Freddy's" crlf)
 (retract *)
@@ -624,10 +624,10 @@
 ;Regla 15
 (defrule R15 "Grand turismo"
 (condiciones
-(modo_de_juego "A")
-(reflejos "B")
-(montruos_carreras "B")
-(tipo_de_carreras "A")
+(general_formaDeJugar "A")
+(ca_reflejosBuenos "B")
+(ca_aventuraPreferida "B")
+(ca_tipoCarrera "A"))
 =>
 (printout t "Se recomienda el juego Grand turismo" crlf)
 (retract *)
@@ -636,12 +636,24 @@
 ;Regla 16
 (defrule R16 "Need for speed"
 (condiciones
-(modo_de_juego "A")
-(reflejos "B")
-(montruos_carreras "B")
-(tipo_de_carreras "B")
+(general_formaDeJugar "A")
+(ca_reflejosBuenos "B")
+(ca_aventuraPreferida "B")
+(ca_tipoCarrera "B"))
 =>
 (printout t "Se recomienda el juego Need for speed underground" crlf)
+(retract *)
+(assert(iniciar))
+)
+;Regla 17
+(defrule R17 "Ikaruga"
+(condiciones
+(general_formaDeJugar "A")
+(ca_reflejosBuenos "A")
+(ca_comoEsTuTiming "A")
+(ca_tematicaPreferida "B"))
+=>
+(printout t "Se recomienda el juego Ikaruga" crlf)
 (retract *)
 (assert(iniciar))
 )
