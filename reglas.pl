@@ -76,33 +76,35 @@ juego_recomendado(control_en_simulacion_humanos, 'The Sims 4').
 juego_recomendado(control_en_simulacion_ciudades, 'SimCity Buildit').
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%% REGLAS DEL ARBOL %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%% REGLAS DEL ARBOL %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%SIMS 4 / SIM CITY
+%% SIMS 4 / SIM CITY
 recomendacion(A,B,C,R):-forma_jugar(A),tipo_juego(A,B),control_en_simulacion(B, C),write('El juego recomendado es: '),juego_recomendado(C,R).
-%%ROCK BAND / IKARUGA
+%% ROCK BAND / IKARUGA
 recomendacion(A,B,C,D,R):-forma_jugar(A),reflejos(A,B),timing(B, C),tematica(C, D),write('El juego recomendado es: '),juego_recomendado(D,R). 
-%%PAC-MA / PUNCH OUT
+%% PAC-MA / PUNCH OUT
 recomendacion(A,B,C,D,R):-forma_jugar(A),reflejos(A,B),timing(B, C),botones(C, D),write('El juego recomendado es: '),juego_recomendado(D,R).
-%%FNAF
+%% FNAF
 recomendacion(A,B,C,D,R):-forma_jugar(A),reflejos(A,B),aventura_pref(B, C),protagonista(C, D),write('El juego recomendado es: '),juego_recomendado(D,R).
-%%GRAN TURISMO / NEED FOR SPEED
+%% GRAN TURISMO / NEED FOR SPEED
 recomendacion(A,B,C,D,R):-forma_jugar(A),reflejos(A,B),aventura_pref(B, C),tipo_carrera(C, D),write('El juego recomendado es: '),juego_recomendado(D,R).
-%%TETRIS / LUMINES
+%% TETRIS / LUMINES
 recomendacion(A,B,C,D,R):-forma_jugar(A),tipo_juego(A,B),desarrollo_juego(B, C),estilo_juego(C, D),write('El juego recomendado es: '),juego_recomendado(D,R).
-%%LIMBO
+%% LIMBO
 recomendacion(A,B,C,D,R):-forma_jugar(A),tipo_juego(A,B),desarrollo_juego(B, C),ambientacion(C, D),write('El juego recomendado es: '),juego_recomendado(D,R).
-%%KATAMARI DOMACY REROLL
+%% KATAMARI DOMACY REROLL
 recomendacion(A,B,C,D,E,R):-forma_jugar(A),tipo_juego(A,B),desarrollo_juego(B, C),ambientacion(C, D),estilo_desarrollo(D,E),write('El juego recomendado es: '),juego_recomendado(E,R).
-%%THE WITCHER / THE WITCHER WILD HUNT
+%% THE WITCHER / THE WITCHER WILD HUNT
 recomendacion(A,B,C,D,E,R):-forma_jugar(A),reflejos(A,B),aventura_pref(B, C),protagonista(C, D),tipo_camara(D,E),write('El juego recomendado es: '),juego_recomendado(E,R).
-%%BRAID / PORTAL 2
+%% BRAID / PORTAL 2
 recomendacion(A,B,C,D,E,F,R):-forma_jugar(A),tipo_juego(A,B),desarrollo_juego(B, C),ambientacion(C, D),estilo_desarrollo(D,E),tipo_texturas(E,F),write('El juego recomendado es: '),juego_recomendado(F,R).
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% PREGUNTAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%%%%%%%%%%%%%%%%%%% PREGUNTAS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%% ROCK BAND %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %recomendacion(forma_jugar_casual,reflejos_buenos,timing_bueno,tematica_banda_rock,R).
